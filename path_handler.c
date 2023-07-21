@@ -1,8 +1,9 @@
 #include "shell.h"
 /**
+ *find_path - Handle the PATH
+ *@command: command to search for
  *
- *
- *
+ * Return: full path or NULL
  */
 char *find_path(char *command)
 {
@@ -27,14 +28,14 @@ char *find_path(char *command)
 
 		strcpy(full_path, dir);
 		strcat(full_path, "/");
-		strcat(full_path,command);
+		strcat(full_path, command);
 
 		if (stat(full_path, &st) == 0 && S_ISREG(st.st_mode) && access(full_path, X_OK) == 0)
 		{
 			return (full_path);
 		}
 
-		free (full_path);
+		free(full_path);
 		dir = strtok(NULL, ":");
 	}
 	return (NULL);
