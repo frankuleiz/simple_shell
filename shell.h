@@ -9,5 +9,6 @@
 #include <sys/wait.h>
 #define BUFFER_SIZE 1024
 void execute_command(char *command);
+char **parse_args(char *command);
 
 #endif
