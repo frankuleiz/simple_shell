@@ -17,6 +17,12 @@ void execute_command(char *command)
 		exit(EXIT_SUCCESS);
 	}
 
+	if (strcmp(command, "env") == 0)
+	{
+		execute_env();
+		return;
+	}
+
 	args = parse_args(command);
 
 	pid = fork();

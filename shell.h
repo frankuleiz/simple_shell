@@ -9,8 +9,11 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #define BUFFER_SIZE 1024
+extern char **environ;
 void execute_command(char *command);
 char **parse_args(char *command);
 char *find_path(char *command);
+void execute_env(void);
+
 
 #endif
