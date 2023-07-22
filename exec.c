@@ -5,6 +5,12 @@
  */
 void execute_command(char *command)
 {
+	if (strcmp(command, "exit") == 0)
+	{
+		write("Exiting the shell.\n");
+		exit(EXIT_SUCCESS);
+	}
+
 	pid_t pid;
 	int status;
 
@@ -17,10 +23,7 @@ void execute_command(char *command)
 	}
 	if (pid == 0)
 	{
-		char *args[2];
-
-		args[0] = command;
-		args[1] = NULL;
+		char *args[] = {command, NULL};
 
 		execve(command, args, NULL);
 
