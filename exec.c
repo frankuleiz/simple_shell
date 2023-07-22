@@ -5,20 +5,26 @@
  */
 void execute_command(char *command)
 {
+	pid_t pid;
+	int status;
+	char **args;
+
 	if (strcmp(command, "exit") == 0)
 	{
-		write("Exiting the shell.\n");
+		char exit_msg[] = "Exiting the shell.\n";
+
+		write(STDOUT_FILENO, exit_msg, sizeof(exit_msg) - 1);
 		exit(EXIT_SUCCESS);
 	}
 
-	pid_t pid;
-	int status;
+	**args == parse_args(command);
 
 	pid = fork();
 
 	if (pid == -1)
 	{
 		perror("fork");
+		free(args);
 		exit(EXIT_FAILURE);
 	}
 	if (pid == 0)
@@ -28,10 +34,12 @@ void execute_command(char *command)
 		execve(command, args, NULL);
 
 		perror(command);
+		free(args);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		wait(&status);
+		free(args);
 	}
 }
