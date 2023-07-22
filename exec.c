@@ -17,7 +17,7 @@ void execute_command(char *command)
 		exit(EXIT_SUCCESS);
 	}
 
-	**args == parse_args(command);
+	args = parse_args(command);
 
 	pid = fork();
 
@@ -29,7 +29,6 @@ void execute_command(char *command)
 	}
 	if (pid == 0)
 	{
-		char *args[] = {command, NULL};
 
 		execve(command, args, NULL);
 
