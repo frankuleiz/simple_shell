@@ -8,10 +8,18 @@ void execute_command(char *command)
 	pid_t pid;
 	int status;
 	char **args;
+	char exit_msg[20];
 
 	if (strcmp(command, "exit") == 0)
 	{
-		char exit_msg[] = "Exiting the shell.\n";
+		char *arg = strchr(command, ' ');
+
+		if (args != NULL)
+		{
+			arg++;
+			status = atoi(arg);
+		}
+		strcpy(exit_msg, "Exiting the shell.\n");
 
 		write(STDOUT_FILENO, exit_msg, sizeof(exit_msg) - 1);
 		exit(EXIT_SUCCESS);
