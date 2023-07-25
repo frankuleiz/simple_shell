@@ -11,7 +11,7 @@
 #define BUFFER_SIZE 1024
 
 int  is_regular_file(const char *path);
-#define IS_EXECUTABLE_FILE(path)(access(path, X_OK) == 0 && is_regular_file(path))
+#define IS_EXECUTABLE_FILE(path) (access(path, X_OK) == 0)
 extern char **environ;
 void execute_command(char *command);
 char **parse_args(char *command);
