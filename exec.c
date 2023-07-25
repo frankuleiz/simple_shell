@@ -16,17 +16,13 @@ void execute_command(char *command)
 		write(STDOUT_FILENO, exit_msg, sizeof(exit_msg) - 1);
 		exit(EXIT_SUCCESS);
 	}
-
 	if (strcmp(command, "env") == 0)
 	{
 		execute_env();
 		return;
 	}
-
 	args = parse_args(command);
-
 	pid = fork();
-
 	if (pid == -1)
 	{
 		perror("fork");
@@ -35,9 +31,7 @@ void execute_command(char *command)
 	}
 	if (pid == 0)
 	{
-
 		execve(command, args, NULL);
-
 		perror(command);
 		free(args);
 		exit(EXIT_FAILURE);

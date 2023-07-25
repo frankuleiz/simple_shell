@@ -9,7 +9,6 @@ char *find_path(char *command)
 {
 	char *path = getenv("PATH");
 	char *dir_start, *dir_end, *full_path;
-	struct stat st;
 	size_t dir_len;
 
 	if (path == NULL)
@@ -34,7 +33,7 @@ char *find_path(char *command)
 		strncpy(full_path, dir_start, dir_len);
 		full_path[dir_len] = '/';
 		strncpy(full_path + dir_len + 1, command, strlen(command) + 1);
-		if (stat(full_path, &st) == 0 && S_ISREG(st.st_mode) && access(full_path, X_OK) == 0)
+		if (IS_EXECUTABLE_FILE(full_path))
 		{
 			return (full_path);
 		}
