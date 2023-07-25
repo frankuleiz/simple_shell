@@ -5,24 +5,18 @@
  */
 void execute_command(char *command)
 {
-	pid_t pid;
 	int status;
 	char **args;
-	char exit_msg[20];
+	pid_t pid;
 
 	if (strcmp(command, "exit") == 0)
 	{
 		char *arg = strchr(command, ' ');
 
-		if (args != NULL)
-		{
-			arg++;
-			status = atoi(arg);
-		}
-		strcpy(exit_msg, "Exiting the shell.\n");
+		status = (arg != NULL) ? atoi(arg + 1) : EXIT_SUCCESS;
 
-		write(STDOUT_FILENO, exit_msg, sizeof(exit_msg) - 1);
-		exit(EXIT_SUCCESS);
+		write(STDOUT_FILENO, "Exiting the shell.\n", 19);
+		exit(status);
 	}
 	if (strcmp(command, "env") == 0)
 	{
