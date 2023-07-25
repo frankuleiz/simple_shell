@@ -19,7 +19,7 @@ char *find_path(char *command);
 void execute_env(void);
 int is_executable_file(const char *path);
 int is_regular_file(const char *path);
-
+char *_strcpy(char *dest, char *src);
 void bring_line(char **input, size_t *n, char *buffer, size_t j);
 ssize_t fetch_line(char **input, size_t *n, FILE *stream);
 
