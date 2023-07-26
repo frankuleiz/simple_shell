@@ -13,7 +13,7 @@ void execute_command(char *command)
 	{
 		char *arg = strchr(command, ' ');
 
-		_exit((arg != NULL) ? atoi(arg + 1) : 0);
+		_exit((arg != NULL) ? atoi(arg + 1) : 2);
 	}
 
 	if (strcmp(command, "env") == 0)
