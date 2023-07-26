@@ -11,7 +11,7 @@ char **parse_args(char *command)
 	char *token;
 	int i = 0;
 
-	char **args = malloc(BUFFER_SIZE * sizeof(char *));
+	char **args = malloc(BUF_SIZE * sizeof(char *));
 
 	if (args == NULL)
 	{
