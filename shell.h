@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <ctype.h>
 #define BUFSIZE 1024
 
 int  is_regular_file(const char *path);

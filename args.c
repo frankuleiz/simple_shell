@@ -8,7 +8,7 @@
 
 char **parse_args(char *command)
 {
-	char *token;
+	char *start = command;
 	int i = 0;
 
 	char **args = malloc(BUFSIZE * sizeof(char *));
@@ -19,13 +19,29 @@ char **parse_args(char *command)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(command, " ");
-	while (token != NULL)
+	while (*command)
 	{
-		args[i++] = token;
-		token = strtok(NULL, " ");
+		while (*command && isspace(*command))
+		{
+			*command = '\0';
+			command++;
+		}
+		if (*command == '\0')
+		{
+			break;
+		}
+		start = command;
+		while (*command && !isspace(*command))
+		{
+			command++;
+		}
+		args[i++] = start;
+
+		if (*command)
+		{
+			*command++ = '\0';
+		}
 	}
 	args[i] = NULL;
-
 	return (args);
 }
