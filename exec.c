@@ -14,8 +14,6 @@ void execute_command(char *command)
 		char *arg = strchr(command, ' ');
 
 		status = (arg != NULL) ? atoi(arg + 1) : EXIT_SUCCESS;
-
-		write(STDOUT_FILENO, "Exiting the shell.\n", 19);
 		exit(status);
 	}
 	if (strcmp(command, "env") == 0)
