@@ -1,44 +1,44 @@
 #include "shell.h"
 /**
  * bring_line - determines the line variable for fetch_line
- * @input: buffer for storing input string
+ * @lineptr: buffer for storing input string
  * @buffer: the string called
  * @n: size of the line
  * @j: size of the buffer
  */
 
-void bring_line(char **input, size_t *n, char *buffer, size_t j)
+void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
 {
-	if (*input == NULL)
+	if (*lineptr == NULL)
 	{
-		if (j > BUFSIZ)
+		if (j > BUFSIZE)
 			*n = j;
 		else
-			*n = BUFSIZ;
-		*input = buffer;
+			*n = BUFSIZE;
+		*lineptr = buffer;
 	}
 	else if (*n < j)
 	{
-		if (j > BUFSIZ)
+		if (j > BUFSIZE)
 			*n = j;
 		else
-			*n = BUFSIZ;
-		*input = buffer;
+			*n = BUFSIZE;
+		*lineptr = buffer;
 	}
 	else
 	{
-		strcpy(*input, buffer);
+		strcpy(*lineptr, buffer);
 		free(buffer);
 	}
 }
 /**
  * fetch_line - fetches the string input
- * @input: buffer for storig input string
+ * @lineptr: buffer for storig input string
  * @n: size of input string
  * @stream: the strean to fetch the string
  * Return: value
  */
-ssize_t fetch_line(char **input, size_t *n, FILE *stream)
+ssize_t fetch_line(char **lineptr, size_t *n, FILE *stream)
 {
 	int i;
 	static ssize_t var;
@@ -52,7 +52,7 @@ ssize_t fetch_line(char **input, size_t *n, FILE *stream)
 		return (-1);
 	var = 0;
 
-	buffer = malloc(sizeof(char) * BUFSIZ);
+	buffer = malloc(sizeof(char) * BUFSIZE);
 	if (buffer == 0)
 		return (-1);
 	while (t != '\n')
@@ -68,13 +68,13 @@ ssize_t fetch_line(char **input, size_t *n, FILE *stream)
 			var++;
 			break;
 		}
-		if (var >= BUFSIZ)
+		if (var >= BUFSIZE)
 			buffer = _realloc(buffer, var, var + 1);
 		buffer[var] = t;
 		var++;
 	}
 	buffer[var] = '\0';
-	bring_line(input, n, buffer, var);
+	bring_line(lineptr, n, buffer, var);
 	value = var;
 	if (i != 0)
 		var = 0;
