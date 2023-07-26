@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#define BUFFER_SIZE 1024
+#define BUF_SIZE 1024
 
 int  is_regular_file(const char *path);
 #define IS_EXECUTABLE_FILE(path) (access(path, X_OK) == 0)
