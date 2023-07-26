@@ -8,12 +8,15 @@ void execute_env(void)
 
 	while (environ[i] != NULL)
 	{
-		write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-		i++;
+		char *line = environ[i];
+		int len = strlen(line);
 
-		if  (environ[i] != NULL)
+		if (len > 0 && line[len - 1] == '\n')
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			line[len - 1] = '\0';
 		}
+		write(STDOUT_FILENO, line, strlen(line));
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
 	}
 }
