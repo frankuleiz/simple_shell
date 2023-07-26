@@ -10,6 +10,10 @@ void execute_env(void)
 	{
 		write(STDOUT_FILENO, environ[i], strlen(environ[i]));
 		i++;
-		write(STDOUT_FILENO, "\n", 1);
+
+		if  (environ[i] != NULL)
+		{
+			write(STDOUT_FILENO, "\n", 1);
+		}
 	}
 }
