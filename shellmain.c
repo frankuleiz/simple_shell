@@ -12,7 +12,7 @@ int main(void)
 
 	while (1)
 	{
-		char prompt[] = "#cisfun$ ";
+		char prompt[] = "";
 
 		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 
