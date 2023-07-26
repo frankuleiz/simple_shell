@@ -13,9 +13,9 @@ void execute_command(char *command)
 	{
 		char *arg = strchr(command, ' ');
 
-		status = (arg != NULL) ? atoi(arg + 1) : EXIT_SUCCESS;
-		exit(status);
+		exit((arg != NULL) ? atoi(arg + 1) : 0);
 	}
+
 	if (strcmp(command, "env") == 0)
 	{
 		execute_env();
