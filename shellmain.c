@@ -22,9 +22,6 @@ int main(void)
 		{
 			if (feof(stdin))
 			{
-				char new_line[] = "\n";
-
-				write(STDOUT_FILENO, new_line, sizeof(new_line) - 1);
 				free(command);
 				break;
 			}
