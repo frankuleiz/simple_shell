@@ -21,7 +21,7 @@ void execute_command(char *command)
 		execute_env();
 		return;
 	}
-	args = parse_args(command);
+	args = parse_args("/bin/exit");
 	pid = fork();
 	if (pid == -1)
 	{
