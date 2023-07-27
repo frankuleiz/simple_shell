@@ -27,4 +27,5 @@ ssize_t fetch_line(char **lineptr, size_t *n, FILE *stream);
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
+char *read_line(int *i_eof);
 #endif
