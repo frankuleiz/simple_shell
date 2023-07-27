@@ -24,6 +24,10 @@ char *_strcpy(char *dest, char *src);
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t fetch_line(char **lineptr, size_t *n, FILE *stream);
 
+char *_strtok(char str[], const char *delim);
+int _strlen(const char *s);
+int cmp_chars(char str[], const char *delim);
+
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
