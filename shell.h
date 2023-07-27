@@ -27,6 +27,7 @@ ssize_t fetch_line(char **lineptr, size_t *n, FILE *stream);
 char *_strtok(char str[], const char *delim);
 int _strlen(const char *s);
 int cmp_chars(char str[], const char *delim);
+char *search_path(char *command);
 
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
