@@ -41,15 +41,15 @@ void set_env(char *name, char *value, data_shell *datash)
 int _setenv(data_shell *datash)
 {
 
-        if (datash->args[1] == NULL || datash->args[2] == NULL)
-        {
-                get_error(datash, -1);
-                return (1);
-        }
+	if (datash->args[1] == NULL || datash->args[2] == NULL)
+	{
+		get_error(datash, -1);
+		return (1);
+	}
 
-        set_env(datash->args[1], datash->args[2], datash);
+	set_env(datash->args[1], datash->args[2], datash);
 
-        return (1);
+	return (1);
 }
 
 /**
@@ -62,19 +62,19 @@ int _setenv(data_shell *datash)
  */
 char *copy_info(char *name, char *value)
 {
-        char *new;
-        int len_name, len_value, len;
+	char *new;
+	int len_name, len_value, len;
 
-        len_name = _strlen(name);
-        len_value = _strlen(value);
-        len = len_name + len_value + 2;
-        new = malloc(sizeof(char) * (len));
-        _strcpy(new, name);
-        _strcat(new, "=");
-        _strcat(new, value);
-        _strcat(new, "\0");
+	len_name = _strlen(name);
+	len_value = _strlen(value);
+	len = len_name + len_value + 2;
+	new = malloc(sizeof(char) * (len));
+	_strcpy(new, name);
+	_strcat(new, "=");
+	_strcat(new, value);
+	_strcat(new, "\0");
 
-        return (new);
+	return (new);
 }
 
 /**

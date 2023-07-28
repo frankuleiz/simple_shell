@@ -7,16 +7,16 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-        int i;
+	int i;
 
-        for (i = 0; s1[i] == s2[i] && s1[i]; i++)
-                ;
+	for (i = 0; s1[i] == s2[i] && s1[i]; i++)
+		;
 
-        if (s1[i] > s2[i])
-                return (1);
-        if (s1[i] < s2[i])
-                return (-1);
-        return (0);
+	if (s1[i] > s2[i])
+		return (1);
+	if (s1[i] < s2[i])
+		return (-1);
+	return (0);
 }
 /**
  * *_strcpy - Copies the string pointed to by src.
@@ -63,20 +63,20 @@ char *_strchr(char *s, char c)
  */
 char *_strcat(char *dest, const char *src)
 {
-        int i;
-        int j;
+	int i;
+	int j;
 
-        for (i = 0; dest[i] != '\0'; i++)
-                ;
+	for (i = 0; dest[i] != '\0'; i++)
+		;
 
-        for (j = 0; src[j] != '\0'; j++)
-        {
-                dest[i] = src[j];
-                i++;
-        }
+	for (j = 0; src[j] != '\0'; j++)
+	{
+		dest[i] = src[j];
+		i++;
+	}
 
-        dest[i] = '\0';
-        return (dest);
+	dest[i] = '\0';
+	return (dest);
 }
 /**
  * _strspn - gets the length of a prefix substring.

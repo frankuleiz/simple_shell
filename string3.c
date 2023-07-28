@@ -7,14 +7,14 @@
  */
 int _isdigit(const char *s)
 {
-        unsigned int i;
+	unsigned int i;
 
-        for (i = 0; s[i]; i++)
-        {
-                if (s[i] < 48 || s[i] > 57)
-                        return (0);
-        }
-        return (1);
+	for (i = 0; s[i]; i++)
+	{
+		if (s[i] < 48 || s[i] > 57)
+			return (0);
+	}
+	return (1);
 }
 /**
  * _strdup - duplicates a str in the heap memory.
@@ -117,10 +117,10 @@ char *_strtok(char str[], const char *delim)
  */
 int _strlen(const char *s)
 {
-        int len;
+	int len;
 
-        for (len = 0; s[len] != 0; len++)
-        {
-        }
-        return (len);
+	for (len = 0; s[len] != 0; len++)
+	{
+	}
+	return (len);
 }

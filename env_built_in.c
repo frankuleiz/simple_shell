@@ -64,15 +64,15 @@ int _env(data_shell *datash)
  */
 int cmp_env_name(const char *nenv, const char *name)
 {
-        int i;
+	int i;
 
-        for (i = 0; nenv[i] != '='; i++)
-        {
-                if (nenv[i] != name[i])
-                {
-                        return (0);
-                }
-        }
+	for (i = 0; nenv[i] != '='; i++)
+	{
+		if (nenv[i] != name[i])
+		{
+			return (0);
+		}
+	}
 
-        return (i + 1);
+	return (i + 1);
 }

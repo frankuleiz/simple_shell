@@ -135,7 +135,7 @@ int first_char(char *input, int *i)
 			continue;
 		if (input[*i] == ';' || input[*i] == '|' || input[*i] == '&')
 			return (-1);
-		
+
 		break;
 	}
 	return (0);
