@@ -69,30 +69,6 @@ int error_sep_op(char *input, int i, char last)
 }
 
 /**
- * first_char - finds index of the first char
- *
- * @input: input string
- * @i: index
- * Return: 1 if there is an error. 0 in other case.
- */
-int first_char(char *input, int *i)
-{
-
-	for (*i = 0; input[*i]; *i += 1)
-	{
-		if (input[*i] == ' ' || input[*i] == '\t')
-			continue;
-
-		if (input[*i] == ';' || input[*i] == '|' || input[*i] == '&')
-			return (-1);
-
-		break;
-	}
-
-	return (0);
-}
-
-/**
  * print_syntax_error - prints when a syntax error is found
  *
  * @datash: data structure
@@ -144,7 +120,26 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool)
 	free(error);
 	free(counter);
 }
-
+/**
+ * first_char - finds index of the first char
+ *
+ * @input: input string
+ * @i: index
+ * Return: 1 if there is an error. 0 in other case.
+ */
+int first_char(char *input, int *i)
+{
+	for (*i = 0; input[*i]; *i += 1)
+	{
+		if (input[*i] == ' ' || input[*i] == '\t')
+			continue;
+		if (input[*i] == ';' || input[*i] == '|' || input[*i] == '&')
+			return (-1);
+		
+		break;
+	}
+	return (0);
+}
 /**
  * check_syntax_error - intermediate function to
  * find and print a syntax error
