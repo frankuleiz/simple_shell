@@ -98,6 +98,7 @@ line_list *add_line_node_end(line_list **head, char *line);
 void free_line_list(line_list **head);
 r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
 void free_rvar_list(r_var **head);
+int cmp_env_name(const char *env, const char *name);
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);

@@ -1,50 +1,31 @@
 #include "shell.h"
+
 /**
- *execute_command - execute a given command
- *@command: the command to be executed
+ * exit_shell - exits the shell
+ *
+ * @datash: data relevant (status and args)
+ * Return: 0 on success.
  */
-void execute_command(char *command)
+int exit_shell(data_shell *datash)
 {
-        int status;
-        char **args;
-        pid_t pid;
+	unsigned int ustatus;
+	int is_digit;
+	int str_len;
+	int big_number;
 
-        if (strcmp(command, "exit") == 0)
-           {
-              char *arg = strchr(command, ' ');
-
-              if (arg != NULL)
-                {
-                   status = atoi(arg + 1);
-                } else {
-                   status = 0;
-                }
-              _exit(status);
-    }
-
-        if (strcmp(command, "env") == 0)
-        {
-                execute_env();
-                return;
-        }
-        args = parse_args(command);
-        pid = fork();
-        if (pid == -1)
-        {
-                perror("fork");
-                free(args);
-                exit(EXIT_FAILURE);
-        }
-        if (pid == 0)
-        {
-                execve(command, args, NULL);
-                perror(command);
-                free(args);
-                exit(EXIT_FAILURE);
-        }
-        else
-        {
-                wait(&status);
-                free(args);
-        }
+	if (datash->args[1] != NULL)
+	{
+		ustatus = _atoi(datash->args[1]);
+		is_digit = _isdigit(datash->args[1]);
+		str_len = _strlen(datash->args[1]);
+		big_number = ustatus > (unsigned int)INT_MAX;
+		if (!is_digit || str_len > 10 || big_number)
+		{
+			get_error(datash, 2);
+			datash->status = 2;
+			return (1);
+		}
+		datash->status = (ustatus % 256);
+	}
+	return (0);
 }
